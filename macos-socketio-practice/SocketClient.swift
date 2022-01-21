@@ -13,15 +13,32 @@ let manager = SocketManager(socketURL: URL(string: "ws://localhost:3000")!, conf
 class SocketClient {
   
   let socket = manager.defaultSocket
-  let auth = ["connectionId": UUID().uuidString]
+  let auth = [
+    "connectionId": UUID().uuidString,
+    "roomId": "roomA"
+  ]
+  
+  var onMessageHandler: NormalCallback? 
   
   func connect() {
     debugPrint(#function)
+    socket.on(clientEvent: .connect) {[weak self] data, ack in
+      debugPrint("Connected: \(self?.socket.sid ?? "")")
+    }
+    if let onMessageHandler = onMessageHandler {
+      socket.on("message", callback: onMessageHandler)
+    }
     socket.connect(withPayload: auth)
   }
   
   func disconnect() {
     debugPrint(#function)
     socket.disconnect()
+  }
+  
+  func send(_ message: String) {
+    debugPrint(#function)
+    let data = ["content": message, "from": "clientA"]
+    socket.emit("message", data)
   }
 }
