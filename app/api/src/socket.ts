@@ -30,7 +30,8 @@ io.of('/chat').on('connection', async (socket) => {
 
   socket.on('message', ({ content, from }) => {
     console.log(`${roomId} content: ${content}, from: ${from}`);
-    socket.emit('message', {
+    // send to target socket id by io.to
+    io.of('/chat').to(socketId).emit('message', {
       content,
       from,
       time: Date.now(),
