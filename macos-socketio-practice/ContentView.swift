@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+  
+    var client = SocketClient()
+  
     var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+      VStack(alignment: .center) {
+        Button("connect", action: {
+          client.connect()
+        })
+      }.frame(width: 480, height: 360, alignment: .center)
     }
 }
 

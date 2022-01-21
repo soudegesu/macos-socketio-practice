@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		9BE80B59279A2F0E00B8AF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE80B58279A2F0E00B8AF10 /* Assets.xcassets */; };
 		9BE80B5C279A2F0E00B8AF10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE80B5B279A2F0E00B8AF10 /* Preview Assets.xcassets */; };
 		9BE80B5F279A2F0E00B8AF10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE80B5D279A2F0E00B8AF10 /* Main.storyboard */; };
+		9BE80B69279A727700B8AF10 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 9BE80B68279A727700B8AF10 /* SocketIO */; };
+		9BE80B6B279A745D00B8AF10 /* SocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE80B6A279A745D00B8AF10 /* SocketClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,7 @@
 		9BE80B5E279A2F0E00B8AF10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BE80B60279A2F0E00B8AF10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BE80B61279A2F0E00B8AF10 /* macos_socketio_practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macos_socketio_practice.entitlements; sourceTree = "<group>"; };
+		9BE80B6A279A745D00B8AF10 /* SocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE80B69279A727700B8AF10 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				9BE80B54279A2F0E00B8AF10 /* AppDelegate.swift */,
+				9BE80B6A279A745D00B8AF10 /* SocketClient.swift */,
 				9BE80B56279A2F0E00B8AF10 /* ContentView.swift */,
 				9BE80B58279A2F0E00B8AF10 /* Assets.xcassets */,
 				9BE80B5D279A2F0E00B8AF10 /* Main.storyboard */,
@@ -90,6 +95,9 @@
 			dependencies = (
 			);
 			name = "macos-socketio-practice";
+			packageProductDependencies = (
+				9BE80B68279A727700B8AF10 /* SocketIO */,
+			);
 			productName = "macos-socketio-practice";
 			productReference = 9BE80B51279A2F0E00B8AF10 /* macos-socketio-practice.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 9BE80B48279A2F0E00B8AF10;
+			packageReferences = (
+				9BE80B67279A727700B8AF10 /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			productRefGroup = 9BE80B52279A2F0E00B8AF10 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -146,6 +157,7 @@
 			files = (
 				9BE80B57279A2F0E00B8AF10 /* ContentView.swift in Sources */,
 				9BE80B55279A2F0E00B8AF10 /* AppDelegate.swift in Sources */,
+				9BE80B6B279A745D00B8AF10 /* SocketClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +356,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9BE80B67279A727700B8AF10 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 16.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9BE80B68279A727700B8AF10 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BE80B67279A727700B8AF10 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9BE80B49279A2F0E00B8AF10 /* Project object */;
 }
