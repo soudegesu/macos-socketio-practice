@@ -12,9 +12,12 @@ struct ContentView: View {
     var client = SocketClient()
   
     var body: some View {
-      VStack(alignment: .center) {
+      VStack(alignment: .center, spacing: 20) {
         Button("connect", action: {
           client.connect()
+        })
+        Button("disconnect", action: {
+          client.disconnect()
         })
       }.frame(width: 480, height: 360, alignment: .center)
     }

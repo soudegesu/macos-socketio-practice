@@ -16,6 +16,12 @@ class SocketClient {
   let auth = ["connectionId": UUID().uuidString]
   
   func connect() {
+    debugPrint(#function)
     socket.connect(withPayload: auth)
+  }
+  
+  func disconnect() {
+    debugPrint(#function)
+    socket.disconnect()
   }
 }
