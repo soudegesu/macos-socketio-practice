@@ -12,7 +12,7 @@ let manager = SocketManager(socketURL: URL(string: "ws://localhost:3000")!, conf
 
 class SocketClient {
   
-  let socket = manager.defaultSocket
+  let socket = manager.socket(forNamespace: "/chat")
   let auth = [
     "connectionId": UUID().uuidString,
     "roomId": "roomA"

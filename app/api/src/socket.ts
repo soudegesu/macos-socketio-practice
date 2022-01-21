@@ -8,7 +8,7 @@ const io = new Server({cors: {
 
 io.connectTimeout(15000);
 
-io.use((socket, next) => {
+io.of('/chat').use((socket, next) => {
   console.log(socket.handshake.auth);
   const connectionId = socket.handshake.auth.connectionId;
   if (!connectionId) {
@@ -18,7 +18,7 @@ io.use((socket, next) => {
   next();
 });
 
-io.on('connection', async (socket) => {
+io.of('/chat').on('connection', async (socket) => {
   console.log('connection');
   const roomId = socket.handshake.auth.roomId;
   const socketId = socket.id;
@@ -29,7 +29,7 @@ io.on('connection', async (socket) => {
   });
 
   socket.on('message', ({ content, from }) => {
-    console.log(`content: ${content}, from: ${from}`);
+    console.log(`${roomId} content: ${content}, from: ${from}`);
     socket.emit('message', {
       content,
       from,
